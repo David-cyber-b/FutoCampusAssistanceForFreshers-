@@ -1,9 +1,79 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FUTO Campus Assistant</title><link rel="manifest" href="manifest.json"><style>*{box-sizing:border-box;font-family:Inter,sans-serif}body{margin:0;background:#f4f6f4;padding:12px}.app{max-width:480px;margin:auto}h1{color:#006400;margin:10px 0 0}h2{color:#006400}.card{background:#fff;border-radius:16px;padding:14px;margin:12px 0;box-shadow:0 4px 12px rgba(0,0,0,.06)}input,select{width:100%;padding:11px;border:1px solid #ccc;border-radius:10px;margin:4px 0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}button{width:100%;padding:12px;background:#006400;color:#fff;border:none;border-radius:10px;font-weight:700;margin-top:8px}table{width:100%}.res{background:#eef7ee;padding:10px;border-radius:10px;margin-top:8px}</style></head><body><div class="app"><h1>FUTO Assist</h1><small>Aggregate • CGPA • Past Questions</small>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FUTO Campus Assistant</title>
+<link rel="manifest" href="manifest.json">
+<style>
+  *{box-sizing:border-box;font-family:Inter,Arial,sans-serif}
+  body{margin:0;background:#f4f6f4;padding:12px}
+  .app{max-width:480px;margin:auto}
+  h1{color:#006400;margin:10px 0 0}
+  h2{color:#006400;font-size:18px}
+  .card{background:#fff;border-radius:16px;padding:14px;margin:12px 0;box-shadow:0 4px 12px rgba(0,0,0,.06)}
+  input,select{width:100%;padding:11px;border:1px solid #ccc;border-radius:10px;margin:4px 0}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  button{width:100%;padding:12px;background:#006400;color:#fff;border:none;border-radius:10px;font-weight:700;margin-top:8px}
+  .res{background:#eef7ee;padding:10px;border-radius:10px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="app">
+  <h1>FUTO Assist</h1>
+  <small>Aggregate • CGPA • Past Questions</small>
 
-<div class="card"><h2>1. FUTO Aggregate</h2><input id="jamb" type="number" placeholder="JAMB over 400"><div class="grid"><select id="g1"><option value="0">Subj 1 Grade</option><option value="90">A1</option><option value="80">B2</option><option value="70">B3</option><option value="60">C4</option><option value="55">C5</option><option value="50">C6</option></select><select id="g2"><option value="0">Subj 2</option><option value="90">A1</option><option value="80">B2</option><option value="70">B3</option><option value="60">C4</option><option value="55">C5</option><option value="50">C6</option></select><select id="g3"><option value="0">Subj 3</option><option value="90">A1</option><option value="80">B2</option><option value="70">B3</option><option value="60">C4</option><option value="55">C5</option><option value="50">C6</option></select><select id="g4"><option value="0">Subj 4</option><option value="90">A1</option><option value="80">B2</option><option value="70">B3</option><option value="60">C4</option><option value="55">C5</option><option value="50">C6</option></select><select id="g5"><option value="0">Subj 5</option><option value="90">A1</option><option value="80">B2</option><option value="70">B3</option><option value="60">C4</option><option value="55">C5</option><option value="50">C6</option></select></div><button onclick="calcAgg()">Calculate Aggregate</button><div id="r1" class="res">Result shows here</div></div>
+  <div class="card">
+    <h2>1. FUTO Aggregate</h2>
+    <input id="jamb" type="number" placeholder="JAMB over 400">
+    <div class="grid">
+      <select id="g1"><option value="0">Subj 1 Grade</option><option value="90">A1</option><option value="80">B2</option><option value="70">B3</option><option value="60">C4</option><option value="55">C5</option><option value="50">C6</option></select>
+      <select id="g2"><option value="0">Subj 2</option><option value="90">A1</option><option value="80">B2</option><option value="70">B3</option><option value="60">C4</option><option value="55">C5</option><option value="50">C6</option></select>
+      <select id="g3"><option value="0">Subj 3</option><option value="90">A1</option><option value="80">B2</option><option value="70">B3</option><option value="60">C4</option><option value="55">C5</option><option value="50">C6</option></select>
+      <select id="g4"><option value="0">Subj 4</option><option value="90">A1</option><option value="80">B2</option><option value="70">B3</option><option value="60">C4</option><option value="55">C5</option><option value="50">C6</option></select>
+      <select id="g5"><option value="0">Subj 5</option><option value="90">A1</option><option value="80">B2</option><option value="70">B3</option><option value="60">C4</option><option value="55">C5</option><option value="50">C6</option></select>
+    </div>
+    <button onclick="calcAgg()">Calculate Aggregate</button>
+    <div id="r1" class="res">Result shows here</div>
+  </div>
 
-<div class="card"><h2>2. CGPA Calculator (5.0)</h2><table id="cg"><tr><td><input placeholder="Course"></td><td><input id="u1" type="number" placeholder="Unit"></td><td><select id="s1"><option value="5">A</option><option value="4">B</option><option value="3">C</option><option value="2">D</option><option value="1">E</option><option value="0">F</option></select></td></tr><tr><td><input placeholder="Course"></td><td><input id="u2" type="number" placeholder="Unit"></td><td><select id="s2"><option value="5">A</option><option value="4">B</option><option value="3">C</option><option value="2">D</option><option value="1">E</option><option value="0">F</option></select></td></tr><tr><td><input placeholder="Course"></td><td><input id="u3" type="number" placeholder="Unit"></td><td><select id="s3"><option value="5">A</option><option value="4">B</option><option value="3">C</option><option value="2">D</option><option value="1">E</option><option value="0">F</option></select></td></tr></table><button onclick="calcGPA()">Calculate CGPA</button><div id="r2" class="res">CGPA shows here</div></div>
+  <div class="card">
+    <h2>2. CGPA Calculator (5.0)</h2>
+    <table>
+      <tr><td><input placeholder="Course"></td><td><input id="u1" type="number" placeholder="Unit"></td><td><select id="s1"><option value="5">A</option><option value="4">B</option><option value="3">C</option><option value="2">D</option><option value="1">E</option><option value="0">F</option></select></td></tr>
+      <tr><td><input placeholder="Course"></td><td><input id="u2" type="number" placeholder="Unit"></td><td><select id="s2"><option value="5">A</option><option value="4">B</option><option value="3">C</option><option value="2">D</option><option value="1">E</option><option value="0">F</option></select></td></tr>
+      <tr><td><input placeholder="Course"></td><td><input id="u3" type="number" placeholder="Unit"></td><td><select id="s3"><option value="5">A</option><option value="4">B</option><option value="3">C</option><option value="2">D</option><option value="1">E</option><option value="0">F</option></select></td></tr>
+    </table>
+    <button onclick="calcGPA()">Calculate CGPA</button>
+    <div id="r2" class="res">CGPA shows here</div>
+  </div>
 
-<div class="card"><h2>3. Past Questions Vault</h2><p>Offline practice - 100 level GST, MTH, PHY, CHM, BIO coming soon. Use offline mode.</p><button onclick="alert('PQ pack added in v2 - chat me for upload')">Download PQ PDF</button></div>
+  <div class="card">
+    <h2>3. Past Questions Vault</h2>
+    <p>Offline practice - 100 level GST, MTH, PHY, CHM, BIO coming soon.</p>
+    <button onclick="alert('PQ pack added in v2')">Download PQ PDF</button>
+  </div>
+</div>
 
-</div><script>function calcAgg(){let j=parseFloat(document.getElementById('jamb').value)||0;let g=[1,2,3,4,5].map(i=>parseFloat(document.getElementById('g'+i).value)||0);if(!j||g.includes(0)){r1.innerHTML='Fill JAMB and all 5 grades';return}let avg=g.reduce((a,b)=>a+b)/5;let ag=(j/400*70)+(avg/90*30);r1.innerHTML=`<b style="font-size:20px;color:#006400">${ag.toFixed(2)}%</b> - FUTO Aggregate`}function calcGPA(){let u=[1,2,3].map(i=>parseFloat(document.getElementById('u'+i).value)||0);let s=[1,2,3].map(i=>parseFloat(document.getElementById('s'+i).value)||0);let tu=u.reduce((a,b)=>a+b,0);let tp=u.reduce((a,b,i)=>a+b*s[i],0);if(tu==0){r2.innerHTML='Enter units';return}r2.innerHTML=`<b style="color:#006400">CGPA: ${(tp/tu).toFixed(2)} / 5.0</b> (${tu} units)`}</script></body></html>
+<script>
+function calcAgg(){
+  let j = parseFloat(document.getElementById('jamb').value) || 0;
+  let g = [1,2,3,4,5].map(i=>parseFloat(document.getElementById('g'+i).value)||0);
+  if(!j || g.includes(0)){r1.innerHTML='Fill JAMB and all 5 grades';return}
+  let avg = g.reduce((a,b)=>a+b)/5;
+  let ag = (j/400*70)+(avg/90*30);
+  r1.innerHTML = `<b style="font-size:20px;color:#006400">${ag.toFixed(2)}%</b> - FUTO Aggregate`;
+}
+function calcGPA(){
+  let u = [1,2,3].map(i=>parseFloat(document.getElementById('u'+i).value)||0);
+  let s = [1,2,3].map(i=>parseFloat(document.getElementById('s'+i).value)||0);
+  let tu = u.reduce((a,b)=>a+b,0);
+  let tp = u.reduce((a,b,i)=>a+b*s[i],0);
+  if(tu==0){r2.innerHTML='Enter units';return}
+  r2.innerHTML = `<b style="color:#006400">CGPA: ${(tp/tu).toFixed(2)} / 5.0</b> (${tu} units)`;
+}
+// This fixes PWABuilder warning
+if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js')}
+</script>
+</body>
+</html>
