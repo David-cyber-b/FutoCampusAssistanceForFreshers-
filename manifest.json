@@ -1,8 +1,10 @@
 {
   "name": "FUTO Campus Assistant",
   "short_name": "FUTO Assist",
+  "description": "Calculate FUTO aggregate, CGPA on 5.0 scale, and access past questions offline for freshers",
   "start_url": ".",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#ffffff",
   "theme_color": "#006400",
   "icons": [{"src":"https://cdn-icons-png.flaticon.com/512/2232/2232688.png","sizes":"512x512","type":"image/png"}]
